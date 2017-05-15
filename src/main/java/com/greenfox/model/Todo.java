@@ -33,6 +33,7 @@ public class Todo {
         this.title = title;
         this.isUrgent = false;
         this.isDone = false;
+        this.user = user;
     }
 
     public long getId() {
