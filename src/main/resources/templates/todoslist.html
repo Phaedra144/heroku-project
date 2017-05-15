@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.w3.org/1999/xhtml">
+<head>
+    <meta charset="UTF-8"/>
+    <title>Todo CRUD App</title>
+    <link rel="stylesheet" type="text/css" href="/todolayout.css"/>
+</head>
+<body>
+<header>
+    <h1>TODOS FOR TODAY:</h1>
+    <a class="btn btn-lg btn-danger" href="/todo/add">Add new todo</a>
+</header>
+
+<table class="table" id="posts_list">
+    <thead>
+    <tr>
+        <th>ID</th>
+        <th>ACTION</th>
+        <th>DONE</th>
+        <th>URGENT</th>
+        <th>USER</th>
+    </tr>
+    </thead>
+    <tbody>
+    <tr data-th-each="todo : ${todos}">
+        <td th:text="${todo.id}"></td>
+        <td th:text="${todo.title}"></td>
+        <td th:text="${todo.isDone}"></td>
+        <td th:text="${todo.isUrgent}"></td>
+        <td th:text="${todo.user.getName()}"></td>
+        <td><a class="btn btn-lg btn-info" th:href="@{'/todo/delete/{id}'(id=${todo.id})}">delete</a></td>
+        <td ><a class="btn btn-lg btn-info" th:href="@{'/todo/{id}/edit'(id=${todo.id})}">edit</a></td>
+    </tr>
+    </tbody>
+</table>
+</body>
+</html>
